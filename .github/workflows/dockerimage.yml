@@ -24,3 +24,17 @@ jobs:
       run: curl http://localhost:8080/ -L --fail -s | grep 'Sign in</button>' -q
     - name: Test Email
       run: docker-compose exec -T humhub php /var/www/localhost/htdocs/protected/yii test/email 'test@example.com' | grep 'Message successfully sent!' -q
+    - name: Publish Docker Image to Docker Hub
+      run: |
+        docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+        docker tag docker_humhub:latest humhub/humhub:latest
+        docker push humhub/humhub:latest
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Upload Docker Hub Description
+      uses: peter-evans/dockerhub-description@v2
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        DOCKERHUB_REPOSITORY: humhub/humhub
