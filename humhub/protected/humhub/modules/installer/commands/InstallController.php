@@ -58,13 +58,16 @@ class InstallController extends Controller
      * On failure: Throws exception
      */
     public function actionWriteDbConfig($db_host, $db_name, $db_user, $db_pass) {
-        $connectionString = "mysql:host=" . $db_host . ";dbname=" . $db_name;
+        $connectionString = "pgsql:host=" . $db_host . ";dbname=" . $db_name;
         $dbConfig = [
             'class' => 'yii\db\Connection',
             'dsn' => $connectionString,
             'username' => $db_user,
             'password' => $db_pass,
             'charset' => 'utf8',
+            'schemaMap' => [
+                'pgsql'=> 'tigrov\pgsql\Schema',
+            ],
         ];
 
         $temporaryConnection = Yii::createObject($dbConfig);

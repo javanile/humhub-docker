@@ -61,6 +61,8 @@ RUN grunt build-assets
 
 RUN rm -rf ./node_modules
 
+RUN composer require --prefer-dist tigrov/yii2-pgsql
+
 FROM alpine:3.12.0
 
 ARG HUMHUB_VERSION
@@ -135,6 +137,8 @@ RUN chmod 600 /etc/crontabs/nginx && \
 VOLUME /var/www/localhost/htdocs/uploads
 VOLUME /var/www/localhost/htdocs/protected/config
 VOLUME /var/www/localhost/htdocs/protected/modules
+
+RUN apk add --no-cache php7-pdo_pgsql
 
 EXPOSE 80
 
