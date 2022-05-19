@@ -124,7 +124,7 @@ class m131023_164513_initial extends Migration
                 'id' => 'char(32) NOT NULL',
                 'expire' => 'integer DEFAULT NULL',
                 'user_id' => 'integer DEFAULT NULL',
-                'data' => 'longblob DEFAULT NULL',
+                'data' => 'bytea DEFAULT NULL',
                     ], '');
             $this->addPrimaryKey('pk_user_http_session', 'user_http_session', 'id');
 
@@ -172,6 +172,36 @@ class m131023_164513_initial extends Migration
                 ], '');
 
         $this->addPrimaryKey('pk_user_space_membership', 'user_space_membership', 'space_id,user_id');
+
+
+
+        ////
+        ///
+        ///
+
+        $this->createTable('queue', [
+            'id' => $this->primaryKey(),
+            'channel' => $this->string(50)->notNull(),
+            'job' => $this->binary()->notNull(),
+            'pushed_at' => $this->integer()->notNull(),
+            'ttr' => $this->integer()->notNull(),
+            'delay' => $this->integer()->notNull(),
+            'priority' => $this->integer()->unsigned()->notNull()->defaultValue(1024),
+            'reserved_at' => $this->integer(),
+            'attempt' => $this->integer(),
+            'done_at' => $this->integer(),
+        ]);
+
+        $this->createTable('queue_exclusive', [
+            'id' => $this->string(50)->notNull(),
+            'job_message_id' => $this->string(50),
+            'job_status' => $this->smallInteger()->defaultValue(2),
+            'last_update' => $this->timestamp()
+        ]);
+        $this->addPrimaryKey('pk_queue_exclusive', 'queue_exclusive', 'id');
+
+        $this->alterColumn('queue', 'channel', $this->string(50)->notNull());
+
     }
 
     public function down()

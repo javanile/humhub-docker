@@ -11,7 +11,7 @@ class m171027_220519_exclusive_jobs extends Migration
 {
     public $tableName = 'queue_exclusive';
 
-    public function safeUp()
+    public function up()
     {
         $this->createTable($this->tableName, [
             'id' => $this->string(50)->notNull(),
@@ -22,7 +22,7 @@ class m171027_220519_exclusive_jobs extends Migration
         $this->addPrimaryKey('pk_queue_exclusive', $this->tableName, 'id');
     }
 
-    public function safeDown()
+    public function down()
     {
         echo "m171027_220519_exclusive_jobs cannot be reverted.\n";
 

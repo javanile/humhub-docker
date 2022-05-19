@@ -42,7 +42,7 @@
         'installer_database' => 'humhub',
       ),
     ),
-    'config_created_at' => 1652982295,
+    'config_created_at' => 1653003719,
     'horImageScrollOnMobile' => '1',
     'databaseInstalled' => true,
     'installed' => true,

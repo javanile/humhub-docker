@@ -54,6 +54,10 @@ cp /var/www/localhost/htdocs/protected/config/patches/m160501_220850_activity_pk
 cp /var/www/localhost/htdocs/protected/config/patches/m170110_151419_membership_notifications.php /var/www/localhost/htdocs/protected/humhub/modules/space/migrations/m170110_151419_membership_notifications.php
 cp /var/www/localhost/htdocs/protected/config/patches/m170111_190400_disable_web_notifications.php /var/www/localhost/htdocs/protected/humhub/modules/notification/migrations/m170111_190400_disable_web_notifications.php
 
+cp /var/www/localhost/htdocs/protected/config/patches/m171025_142030_queue_update.php  /var/www/localhost/htdocs/protected/humhub/modules/queue/migrations/m171025_142030_queue_update.php
+cp /var/www/localhost/htdocs/protected/config/patches/m171027_220519_exclusive_jobs.php  /var/www/localhost/htdocs/protected/humhub/modules/queue/migrations/m171027_220519_exclusive_jobs.php
+cp /var/www/localhost/htdocs/protected/config/patches/m190211_133045_channel_length.php  /var/www/localhost/htdocs/protected/humhub/modules/queue/migrations/m190211_133045_channel_length.php
+
 cp /var/www/localhost/htdocs/protected/config/patches/Migration.php /var/www/localhost/htdocs/protected/humhub/components/Migration.php
 cp /var/www/localhost/htdocs/protected/config/patches/Birthday.php /var/www/localhost/htdocs/protected/humhub/modules/user/models/fieldtype/Birthday.php
 
