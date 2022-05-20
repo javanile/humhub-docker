@@ -13,9 +13,9 @@ RUN apk add --no-cache \
     wget
 
 WORKDIR /usr/src/
-RUN wget https://github.com/humhub/humhub/archive/v${HUMHUB_VERSION}.tar.gz -q -O humhub.tar.gz && \
+RUN wget https://github.com/javanile/humhub/archive/refs/heads/postgresql.tar.gz -q -O humhub.tar.gz && \
     tar xzf humhub.tar.gz && \
-    mv humhub-${HUMHUB_VERSION} humhub && \
+    mv humhub-postgresql humhub && \
     rm humhub.tar.gz
     
 WORKDIR /usr/src/humhub
@@ -42,6 +42,7 @@ RUN apk add --no-cache \
     php7-zip \
     php7-tokenizer \
     php7-exif \
+    php7-intl \
     php7-fileinfo
 
 RUN composer install --no-ansi --no-dev --no-interaction --no-progress --no-scripts --optimize-autoloader && \

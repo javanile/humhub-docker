@@ -3,3 +3,6 @@ start:
 
 bash:
 	docker-compose exec humhub sh
+
+build:
+	docker-compose build humhub

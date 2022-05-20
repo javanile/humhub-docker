@@ -2,7 +2,7 @@
 array (
   'params' => 
   array (
-    'enablePjax' => false,
+    'enablePjax' => true,
   ),
   'components' => 
   array (
